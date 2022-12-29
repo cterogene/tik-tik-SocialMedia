@@ -19,7 +19,7 @@
         {
             name: 'userId',
             title: 'UserId',
-            type: 'String',
+            type: 'string',
         },
         {
             name: 'postedBy',
