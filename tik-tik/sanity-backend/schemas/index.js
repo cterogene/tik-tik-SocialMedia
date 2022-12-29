@@ -1,1 +1,3 @@
-export const schemaTypes = []
+export const schemaTypes = [
+    post, user, comment, postedBy
+]
