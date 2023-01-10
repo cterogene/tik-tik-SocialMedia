@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { NextPage } from 'next';
 import { GoogleLogin } from '@react-oauth/google';
-import { GoogleOAuthProvider } from '@react-oauth/google';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { AiFillHome, AiOutlineMenu } from 'react-icons/ai';
@@ -31,17 +30,6 @@ const Sidebar = () => {
             <div className=' px-2 py-2 hidden xl:block '>
               <p className='text-gray-400'>Log in to like and comment on videos</p>
               <div className='pr-4'>
-                <GoogleOAuthProvider clientId="">
-                  <GoogleLogin
-                    render={(renderProps) => (
-                      <button></button>
-
-                    )}
-                    onSuccess={() => { }}
-                    onError={() => { }}
-
-                  />
-                </GoogleOAuthProvider>
               </div>
             </div>
           )}
