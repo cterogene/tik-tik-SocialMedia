@@ -5,6 +5,9 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { AiFillHome, AiOutlineMenu } from 'react-icons/ai';
 import { ImCancelCircle } from 'react-icons/im';
+import Discover from './Discover';
+import SuggestedAccounts from './SuggestedAccounts';
+import Footer from './Footer';
 const Sidebar = () => {
   const [showSidebar, setShowSidebar] = useState(true);
   const normalLink = 'flex items-center gap-3 hover: bg-primary p-3 justify-center xl:justify-start cursor-pointer font-semibold text-[#F51997] rounded';
@@ -26,6 +29,9 @@ const Sidebar = () => {
               </div>
             </Link>
           </div>
+          <Discover />
+          <SuggestedAccounts />
+          <Footer />
           
         </div>
       )}
