@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Video } from '../types'
 import { NextPage } from 'next'
 import Image from 'next/image'
@@ -12,7 +12,9 @@ interface Iprops {
 }
 
 const VideosCard: NextPage<Iprops> = ({ post }) => {
-    return (
+
+    const  [isHover, setIsHover] = useState(false);
+    return ( 
         <div className='flex flex-col border-b-2 border-gray-200 pb-6'>
             <div>
                 <div className='flex gap-3 p-2 cursor-pointer font-semibold rounded'>
@@ -43,6 +45,28 @@ const VideosCard: NextPage<Iprops> = ({ post }) => {
                     </div>
 
                 </div>
+            </div>
+            <div className='lg:ml-20 flex gap-4 relative'>
+                <div 
+                onMouseEnter={() =>{setIsHover(true)}} 
+                onMouseLeave={() =>{setIsHover(false)}}
+                className='rounded-3xl'>
+                    <Link href='/'>
+                        <video
+                        src={post.video.asset.url}
+                        className='lg:w[600px] h-[300px] md:h-[400px] lg:h-[530px] w-[200px] rounded-2xl cursor-pointer bg-gray-100'
+                        loop
+                        >
+
+                        </video>
+                    </Link>
+                    {isHover && (
+                        <div>
+                        </div>
+                    )}
+
+                </div>
+
             </div>
         </div>
     )
