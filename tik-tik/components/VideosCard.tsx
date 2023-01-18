@@ -12,6 +12,9 @@ interface Iprops {
 }
 
 const VideosCard: NextPage<Iprops> = ({ post }) => {
+const [playing, setPlaying] = useState(false);
+const [isVideoMuted, setIsVideoMuted] = useState(false);
+
 
     const  [isHover, setIsHover] = useState(false);
     return ( 
@@ -62,9 +65,26 @@ const VideosCard: NextPage<Iprops> = ({ post }) => {
                     </Link>
                     {isHover && (
                         <div>
+                            {playing ? (
+                                <button> <BsFillPauseFill className='text-blak text-xl lg:text-4xl'/> </button>
+                            ) :
+                            (
+                                <button>
+                                    <BsFillPlayFill className='text-blak text-xl lg:text-4xl' />
+                                </button>
+                            )}
+
+                            {isVideoMuted ? (
+                                <button> <HiVolumeOff className='text-blak text-xl lg:text-4xl'/> </button>
+                            ) :
+                            (
+                                <button>
+                                    <HiVolumeUp  className='text-blak text-xl lg:text-4xl' />
+                                </button>
+                            )}
                         </div>
                     )}
-
+ 
                 </div>
 
             </div>
