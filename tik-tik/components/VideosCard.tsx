@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { Video } from '../types'
 import { NextPage } from 'next'
 import Image from 'next/image'
@@ -16,7 +16,21 @@ const [playing, setPlaying] = useState(false);
 const [isVideoMuted, setIsVideoMuted] = useState(false);
 
 
-    const  [isHover, setIsHover] = useState(false);
+const  [isHover, setIsHover] = useState(false);
+const videoRef = useRef<HTMLVideoElement>(null);
+const onVideoPress = () => {
+    if(playing) {
+        videoRef.current?.pause();
+        setPlaying(false);
+
+    }
+    else{
+        videoRef.current?.play();
+        setPlaying(true);
+    }
+}
+
+
     return ( 
         <div className='flex flex-col border-b-2 border-gray-200 pb-6'>
             <div>
@@ -56,6 +70,7 @@ const [isVideoMuted, setIsVideoMuted] = useState(false);
                 className='rounded-3xl'>
                     <Link href='/'>
                         <video
+                        ref={videoRef}
                         src={post.video.asset.url}
                         className='lg:w[600px] h-[300px] md:h-[400px] lg:h-[530px] w-[200px] rounded-2xl cursor-pointer bg-gray-100'
                         loop
@@ -66,13 +81,13 @@ const [isVideoMuted, setIsVideoMuted] = useState(false);
                     {isHover && (
                         <div>
                             {playing ? (
-                                <button> <BsFillPauseFill className='text-blak text-xl lg:text-4xl'/> </button>
+                                <button onClick={onVideoPress}> <BsFillPauseFill className='text-blak text-xl lg:text-4xl'/> </button>
                             ) :
                             (
-                                <button>
+                                <button onClick={onVideoPress}>
                                     <BsFillPlayFill className='text-blak text-xl lg:text-4xl' />
                                 </button>
-                            )}
+                            )} 
 
                             {isVideoMuted ? (
                                 <button> <HiVolumeOff className='text-blak text-xl lg:text-4xl'/> </button>
